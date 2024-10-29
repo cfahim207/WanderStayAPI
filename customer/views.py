@@ -109,7 +109,7 @@ class UserLoginApiView(APIView):
 class UserlogoutapiView(APIView):
     permission_classes = [AllowAny]
     def post(self, request):
-        request.user.auth_token.delete()
+        # request.user.auth_token.delete()
         logout(request)
         return Response({"message":"logout Successfully"})
     
