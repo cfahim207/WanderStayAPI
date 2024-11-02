@@ -99,20 +99,11 @@ class UserLoginApiView(APIView):
         return Response(serializer.errors)
     
 
-# class UserlogoutView(APIView):
-#     def get(self,request):
-#         request.user.auth_token.delete()
-#         logout(request)
-#         return redirect("login")
-
-@method_decorator(csrf_exempt, name='dispatch')
 class UserlogoutapiView(APIView):
-    permission_classes = [AllowAny]
-    def post(self, request):
-        # request.user.auth_token.delete()
+    def get(self,request):
         logout(request)
-        return Response({"message":"logout Successfully"})
-    
+        return redirect("login")
+ 
     
 class UserDetailView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
